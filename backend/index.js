@@ -1,5 +1,7 @@
 import express from "express";
 import cors from "cors";
+import path from "path";
+import { fileURLToPath } from "url";
 import cookieParser from "cookie-parser";
 import dotenv from "dotenv";
 import { connectDB } from "./config/connectDB.js";
@@ -23,11 +25,11 @@ app.use(cookieParser());
 
 // connection to db
 connectDB();
-// API ENDPOIMTS
-app.get("/",(req,res)=> {
-    res.send("hello");
-}
-);
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+// API ENDPOINTS
+app.use(express.static(path.join(__dirname, "../frontend/dist")));
 app.use("/uploads",express.static("uploads"));
 app.use("/auth",authRouter);
 app.use("/user",userRouter);
@@ -35,6 +37,10 @@ app.use("/category",categoryRouter);
 app.use("/company",CompanyRouter);
 app.use("/job",jobRouter);
 app.use("/application",applicationRouter);
+
+app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "../frontend/dist/index.html"));
+});
 
 const PORT=process.env.PORT || 5000;
 
