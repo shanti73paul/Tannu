@@ -99,7 +99,7 @@ const Applicants = () => {
                                     </td>
                                     <td className="px-6 py-4 whitespace-nowrap">
                                         <div className="text-sm font-medium text-gray-900">
-                                            <a href={`${import.meta.env.VITE_BACKEND_URL}/uploads/${item.applicant.resume}`}
+                                            <a href={`http://localhost:5000/uploads/${item.applicant.resume}`}
                                             target="_blank"
                                             rel="noopener noreferrer"
                                             className="text-blue-600 underline"

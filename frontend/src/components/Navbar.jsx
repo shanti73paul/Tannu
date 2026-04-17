@@ -63,7 +63,7 @@ const Navbar = () => {
                     <div className="relative inline-block"
                      onMouseEnter={()=>setIsOpen(true)}
                      onMouseLeave={()=>setIsOpen(false)}>
-                     <img src={user?.image ? `${import.meta.env.VITE_BACKEND_URL}/uploads/${user.image}` : assets.user_profile} alt="profile" className="w-10 h-10 rounded-full cursor-pointer border border-gray-200 object-cover shadow-sm transition-transform hover:scale-105"/>
+                     <img src={user?.image ? `http://localhost:5000/uploads/${user.image}` : assets.user_profile} alt="profile" className="w-10 h-10 rounded-full cursor-pointer border border-gray-200 object-cover shadow-sm transition-transform hover:scale-105"/>
                      {isOpen && (
                          <div className="absolute right-0 mt-2 w-48 bg-white border border-gray-100 shadow-xl rounded-xl py-2 z-50 overflow-hidden transform opacity-100 transition-opacity duration-200">
                             <p className="px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50 hover:text-primary transition-colors cursor-pointer"

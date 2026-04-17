@@ -18,7 +18,7 @@ const JobCard = ({ job }) => {
       <div className="flex justify-between items-start">
         <div className="flex gap-4 items-center">
             <div className="w-14 h-14 rounded-xl border border-gray-100 p-2 flex items-center justify-center bg-gray-50">
-                <img src={`${import.meta.env.VITE_BACKEND_URL}/uploads/${job.company?.logo}`} alt={job.company?.name || "Company"} className="max-w-full max-h-full object-contain object-center"/>
+                <img src={`http://localhost:5000/uploads/${job.company?.logo}`} alt={job.company?.name || "Company"} className="max-w-full max-h-full object-contain object-center"/>
             </div>
             <div>
                 <h3 className="text-base font-semibold text-gray-900 leading-tight">{job.company?.name}</h3>

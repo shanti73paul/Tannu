@@ -6,7 +6,7 @@ const CategoriesList = () => {
     const {categoriesData, setCategoriesData,axios}=useContext(AppContext);
     const handleDelete=async(id)=>{
         try {
-            const {data}=await axios.delete(`${import.meta.env.VITE_BACKEND_URL}/category/delete/${id}`);
+            const {data}=await axios.delete(`http://localhost:5000/category/delete/${id}`);
             if(data.success) {
                 setCategoriesData(categoriesData.filter((c)=>c._id !== id));
                   toast.success(data.message);
@@ -35,7 +35,7 @@ const CategoriesList = () => {
                     {categoriesData.map((category)=>(
                             <tr key={category._id} className="hover:bg-gray-50">
                                 <td className="py-3 px-4 border-b">
-                                    <img src={`${import.meta.env.VITE_BACKEND_URL}/uploads/${category.logo}`}alt="" className="w-12 h-12 rounded object-cover border" />
+                                    <img src={`http://localhost:5000/uploads/${category.logo}`}alt="" className="w-12 h-12 rounded object-cover border" />
                                 </td>
                                 <td>
                                     <p className="py-3 px-4  font-medium">{category.name}</p>

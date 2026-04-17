@@ -26,7 +26,7 @@ const PostJob = () => {
   const [companies, setCompanies] = useState([]);
   const fetchCompanies = async () => {
     try {
-      const { data } = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/company/get-employer-companies`);
+      const { data } = await axios.get(`http://localhost:5000/company/get-employer-companies`);
       if (data.success) {
         setCompanies(data.companies);
       } else {
@@ -43,7 +43,7 @@ const PostJob = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const { data } = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/job/post`, jobData);
+      const { data } = await axios.post(`http://localhost:5000/job/post`, jobData);
       if (data.success) {
         toast.success(data.message);
         fetchJobs(); // 🔥 Automatically fetch updated list

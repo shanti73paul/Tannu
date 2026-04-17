@@ -27,7 +27,7 @@ const {companyData}=useContext(AppContext);
           companyData.map((company)=>(
             <tr key={company._id} className="hover:bg-gray-50">
                 <td className="p-3 border-b">
-                 <img src={company?.logo ? `${import.meta.env.VITE_BACKEND_URL}/uploads/${company.logo}` : ""} alt="" className="w-16 h-16 object-cover border"/>
+                 <img src={company?.logo ? `http://localhost:5000/uploads/${company.logo}` : ""} alt="" className="w-16 h-16 object-cover border"/>
                    </td>
                     <td className="p-3 border-b">
                  {company.name}

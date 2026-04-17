@@ -68,7 +68,7 @@ try {
   formPlayload.append("profileImage",formData.profileImage);
 
 
-  const { data } = await axios.put(`${import.meta.env.VITE_BACKEND_URL}/user/update-profile/${user._id}`, formPlayload,{
+  const { data } = await axios.put(`http://localhost:5000/user/update-profile/${user._id}`, formPlayload,{
     headers: {
       "Content-Type": "multipart/form-data",
     },
@@ -98,7 +98,7 @@ try {
         </div>
 
         {formData.profileImage && (
-          <img src={formData?.profileImage ? `${import.meta.env.VITE_BACKEND_URL}/uploads/${formData.profileImage}` : ""} alt="" className="w-24 h-24 object-cover rounded-full mb-4" />
+          <img src={formData?.profileImage ? `http://localhost:5000/uploads/${formData.profileImage}` : ""} alt="" className="w-24 h-24 object-cover rounded-full mb-4" />
         )
         }
 
@@ -191,7 +191,7 @@ try {
          
          {formData.resume&&(
           <div className="mt-2">
-            <a href={`${import.meta.env.VITE_BACKEND_URL}/uploads/${formData.resume}`}
+            <a href={`http://localhost:5000/uploads/${formData.resume}`}
               target="_blank"
               rel="noopener noreferrer"
               className="text-blue-600 underline"

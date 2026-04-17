@@ -33,7 +33,7 @@ const handleSubmit=async(e)=>{
     formPayload.append("about",companyData.about);
     formPayload.append("logo",companyData.logo);
 
-    const {data}=await axios.post(`${import.meta.env.VITE_BACKEND_URL}/company/add`,formPayload,
+    const {data}=await axios.post(`http://localhost:5000/company/add`,formPayload,
        { headers:{
           "Content-Type":"multipart/form-data",
         },

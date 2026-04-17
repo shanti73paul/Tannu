@@ -35,7 +35,7 @@ const AddCategory = () => {
             formPayload.append("logo",categoryData.logo);
 
             const {data}=await axios.post(
-                `${import.meta.env.VITE_BACKEND_URL}/category/add`,
+                `http://localhost:5000/category/add`,
                 formPayload,
                 {
                 headers:{

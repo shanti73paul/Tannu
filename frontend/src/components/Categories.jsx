@@ -21,7 +21,7 @@ const Categories = () => {
             const colorClass=colors[index%colors.length];
             return(
               <div key={index} className={`flex  max-w- [250px] items-center justify-center gap-1 border border-gray-300 rounded-xl py-6 shadow ${colorClass}`}>
-                <img src={item?.logo ? `${import.meta.env.VITE_BACKEND_URL}/uploads/${item.logo}` : ""} alt="" className="w-12 h-12 rounded-full" />
+                <img src={item?.logo ? `http://localhost:5000/uploads/${item.logo}` : ""} alt="" className="w-12 h-12 rounded-full" />
                 <div className="flex flex-col items-center justify-center">
                   <h3 className="text-lg font-semibold">{item.name}</h3>
                   <p className="text-sm">{item.positions}open postitions</p>

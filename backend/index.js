@@ -1,7 +1,5 @@
 import express from "express";
 import cors from "cors";
-import path from "path";
-import { fileURLToPath } from "url";
 import cookieParser from "cookie-parser";
 import dotenv from "dotenv";
 import { connectDB } from "./config/connectDB.js";
@@ -16,20 +14,27 @@ import applicationRouter from "./routes/applicationsRoutes.js";
 
 const app=express();
 
-const allowedOrigins=["http://localhost:5173", "http://localhost:5174", process.env.FRONTEND_URL].filter(Boolean);
+const allowedOrigins=["http://localhost:5173", "http://localhost:5174", process.env.CLIENT_URL];
 // middlewares
 app.use(express.json());
-app.use(cors({origin:allowedOrigins,credentials:true}));
+const corsOptions = {
+    origin: (origin, callback) => {
+        if (!origin || allowedOrigins.includes(origin)) {
+            callback(null, true);
+        } else {
+            callback(new Error('Not allowed by CORS'));
+        }
+    },
+    credentials: true,
+};
+app.use(cors(corsOptions));
 app.use(cookieParser());
 
 
 // connection to db
 connectDB();
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
 
 // API ENDPOINTS
-app.use(express.static(path.join(__dirname, "../frontend/dist")));
 app.use("/uploads",express.static("uploads"));
 app.use("/auth",authRouter);
 app.use("/user",userRouter);
@@ -38,9 +43,7 @@ app.use("/company",CompanyRouter);
 app.use("/job",jobRouter);
 app.use("/application",applicationRouter);
 
-app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, "../frontend/dist/index.html"));
-});
+
 
 const PORT=process.env.PORT || 5000;
 

@@ -13,7 +13,7 @@ const AllUsers = () => {
   const fetchAllStudents=async()=>{
     try {
 
-      const {data}=await axios.get(`${import.meta.env.VITE_BACKEND_URL}/user/all-students`);
+      const {data}=await axios.get(`http://localhost:5000/user/all-students`);
       if(data.success) {
         setStudents(data.students);
       }
@@ -51,7 +51,7 @@ const AllUsers = () => {
             students.map((student)=>(
               <tr key={student._id || student.id} className="border-t">
                 <td className="px-4 py-2">
-                    <img src={student?.image ? `${import.meta.env.VITE_BACKEND_URL}/uploads/${student.image}` : ""} alt="profile" className="w-12 h-12 rounded-full object-cover" />
+                    <img src={student?.image ? `http://localhost:5000/uploads/${student.image}` : ""} alt="profile" className="w-12 h-12 rounded-full object-cover" />
                   </td>
                    <td className="px-4 py-2">{student.name}</td>
                   <td className="px-4 py-2">{student.email}</td>
@@ -63,7 +63,7 @@ const AllUsers = () => {
                   <td className="px-4 py-2">{student.bio}</td>
                   
                     <td className="px-4 py-2">
-                     <a href={student?.resume ? `${import.meta.env.VITE_BACKEND_URL}/uploads/${student.resume}` : "#"} className="text-blue-500 hover:underline">Resume</a>
+                     <a href={student?.resume ? `http://localhost:5000/uploads/${student.resume}` : "#"} className="text-blue-500 hover:underline">Resume</a>
                     </td>
               </tr>
 

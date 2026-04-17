@@ -7,7 +7,7 @@ const {axios,navigate}=useContext(AppContext);
 const [appliedJobs,setAppliedJobs]=useState([]);
 const fetchAppliedJobs=async()=>{
     try {
-        const {data}=await axios.get(`${import.meta.env.VITE_BACKEND_URL}/application/student-applications`);
+        const {data}=await axios.get(`http://localhost:5000/application/student-applications`);
         if(data.success) {
             setAppliedJobs(data.applications);
         } else{

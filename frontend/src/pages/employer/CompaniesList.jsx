@@ -8,7 +8,7 @@ const [companyData,setCompanyData]=useState([]);
 
 const fetchCompanies=async()=>{
   try {
-    const {data}=await axios.get(`${import.meta.env.VITE_BACKEND_URL}/company/get-employer-companies`);
+    const {data}=await axios.get(`http://localhost:5000/company/get-employer-companies`);
     if (data.success) {
       setCompanyData(data.companies);
     }else{
@@ -23,7 +23,7 @@ useEffect(()=>{
 },[]);
 const handleDelet=async (id)=>{
 try {
-  const {data}=await axios.delete(`${import.meta.env.VITE_BACKEND_URL}/company/delete/${id}`);
+  const {data}=await axios.delete(`http://localhost:5000/company/delete/${id}`);
   if (data.success) {
     setCompanyData(companyData.filter((c)=>c._id !== id));
     toast.success(data.message);
@@ -58,7 +58,7 @@ try {
           companyData.map((company)=>(
             <tr key={company._id} className="hover:bg-gray-50">
                 <td className="p-3 border-b">
-                 <img src={company?.logo ? `${import.meta.env.VITE_BACKEND_URL}/uploads/${company.logo}` : ""} alt="" className="w-16 h-16 object-cover border"/>
+                 <img src={company?.logo ? `http://localhost:5000/uploads/${company.logo}` : ""} alt="" className="w-16 h-16 object-cover border"/>
                    </td>
                     <td className="p-3 border-b">
                  {company.name}

@@ -5,7 +5,7 @@ import toast from "react-hot-toast";
 
 // ✅ Axios Global Config
 const api = axios.create({
-    baseURL: "/", // proxy will handle backend
+    baseURL: import.meta.env.VITE_BACKEND_URL || "/", // proxy or backend URL
     withCredentials: true,
 });
 
