@@ -43,7 +43,19 @@ app.use("/company",CompanyRouter);
 app.use("/job",jobRouter);
 app.use("/application",applicationRouter);
 
+import path from "path";
+import { fileURLToPath } from "url";
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+// Serve frontend static files
+const frontendDistPath = path.resolve(__dirname, "../frontend/dist");
+app.use(express.static(frontendDistPath));
+
+app.get("*", (req, res) => {
+    res.sendFile(path.join(frontendDistPath, "index.html"));
+});
 
 const PORT=process.env.PORT || 5000;
 
